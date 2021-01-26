@@ -1,11 +1,26 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthController } from './auth/auth.controller';
+import { MongooseModule } from '@nestjs/mongoose'
+
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+
+import { configModule } from './configure.root';
+import { TokenModule } from './token/token.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, AuthController],
-  providers: [AppService],
+  imports: [
+    AuthModule,
+    UserModule,
+    TokenModule,
+    configModule,
+    // MongooseModule.forRoot('mongodb+srv://alex:aleksey01@cluster0.ioqyo.mongodb.net/test-project?retryWrites=true&w=majority')
+    MongooseModule.forRoot(
+      process.env.URI_DB_CONNECT,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }
+    ),
+  ]
 })
 export class AppModule {}
