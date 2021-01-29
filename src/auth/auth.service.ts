@@ -8,11 +8,11 @@ import { UserService } from '../user/user.service';
 import { TokenService } from '../token/token.service';
 
 import { CreateUserDto } from '../user/dto/create-user.dto';
-import { SignInDto } from './dto/signin.dto';
-import { IReadableUser } from '../user/interfaces/readable-user.interface';
-import { UserDocument } from '../user/schemas/user.schemas';
-import { CreateUserTokenDto } from '../token/dto/create-user-token.dto';
 import { ITokenPayload } from './interfaces/token-payload.interface';
+import { IUser } from '../user/interfaces/user.interface';
+import { SignInDto } from './dto/signin.dto';
+import { CreateUserTokenDto } from '../token/dto/create-user-token.dto';
+import { UpdateUserDto } from '../user/dto/update-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -27,18 +27,37 @@ export class AuthService {
     return true
   }
 
-  async singIn({ email, password }: SignInDto): Promise<IReadableUser> {
+  async singIn({ email, password }: SignInDto): Promise<any> {
     const user = await this.userService.findByEmail(email)
 
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = await this.signUser(user);
-      const readUser = user.toObject() as IReadableUser
-      return { ...readUser, token }
+      user.password = undefined
+
+      return {user, token}
     }
     throw new BadRequestException('Invalid credentials');
   }
 
-  async signUser(user: UserDocument): Promise<string> {
+  async logout({_id, token}): Promise<boolean>{
+    await this.tokenService.remove(_id, token)
+    return true
+  }
+
+  async edit({_id}, updateUserDto:UpdateUserDto){
+    const user =  await this.userService.update(_id,updateUserDto)
+    user.password = undefined
+    return user
+  }
+
+  async getUser({_id}){
+    const user = await this.userService.findById(_id)
+    user.password = undefined
+    return user
+  }
+
+
+  async signUser(user: IUser): Promise<string> {
 
     const tokenPayload: ITokenPayload = {
       _id: user._id,

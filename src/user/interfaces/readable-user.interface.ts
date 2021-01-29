@@ -5,7 +5,7 @@ export interface IReadableUser {
     readonly group: string;
     readonly course: string;
     readonly specialty: string;
-    readonly password: string;
+    // readonly password: string;
     readonly role: string;
     readonly avatar: string;
     token?: string;

@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 
 import { configModule } from './configure.root';
 import { TokenModule } from './token/token.module';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TokenModule } from './token/token.module';
         useUnifiedTopology: true
       }
     ),
+    TestModule,
   ]
 })
 export class AppModule {}
