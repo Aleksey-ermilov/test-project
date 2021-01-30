@@ -8,7 +8,7 @@ export type TestDocument = Test & Document
 @Schema()
 export class Test{
 
-  @Prop({ required: true, unique:true} )
+  @Prop({ required: true} )
   nameTest: string
 
   @Prop({ required: true} )
@@ -26,7 +26,7 @@ export class Test{
   @Prop({ required: true} )
   complexity: string
 
-  @Prop({ required: true, index:true, unique:true } )
+  @Prop({ required: true } )
   dateCreate: Date
 
   @Prop()
@@ -34,4 +34,4 @@ export class Test{
 
 }
 
-export const TestSchemas = SchemaFactory.createForClass(Test).index({ dateCreate: 1 }, { unique: true });
+export const TestSchemas = SchemaFactory.createForClass(Test)//.index({ dateCreate: 1 }, { unique: true });

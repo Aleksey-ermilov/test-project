@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 import { TestService } from './test.service';
@@ -24,6 +24,28 @@ export class TestController {
   create(@Body() testDto: TestDto): Promise<Test> {
     // console.log(testDto);
     return this.testService.creatTest(testDto)
+  }
+
+  @Get(':id')
+  @UseGuards(AuthGuard())
+  findById(@Param('id') id: string) {
+    return this.testService.findById(id)
+  }
+
+  @Get('/testTeacher/:idTeacher')
+  @UseGuards(AuthGuard())
+  findAllByIdTeacher(@Param('idTeacher') idTeacher: string) {
+    return this.testService.findAllByIdTeacher(idTeacher)
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.testService.removeById(id)
+  }
+
+  @Put(':id')
+  update(@Body() testDto: TestDto, @Param('id') id: string) {
+    return this.testService.update(id, testDto)
   }
 
 }

@@ -9,13 +9,13 @@ export class TestDto {
   @IsNotEmpty()
   idTeacher: string
   @IsNotEmpty()
-  timeTest: Date
+  timeTest: any
   @IsNotEmpty()
   subject: string
   @IsNotEmpty()
   complexity: string
   @IsNotEmpty()
-  dateCreate: Date
+  dateCreate: any
   @IsNotEmpty()
   questions: [QuestionDto];
 }

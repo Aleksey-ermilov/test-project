@@ -34,4 +34,20 @@ export class TestService {
     return await createTest.save()
   }
 
+  async findById(id) {
+    return await this.testModel.findById(id).exec()
+  }
+
+  async findAllByIdTeacher(idTeacher) {
+    return await this.testModel.find({idTeacher}).exec()
+  }
+
+  async update(id, updateTest:TestDto) {
+    return await this.testModel.findByIdAndUpdate(id, updateTest)
+  }
+
+  async removeById(id) {
+    return  await this.testModel.findByIdAndRemove(id)
+  }
+
 }

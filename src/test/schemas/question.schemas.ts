@@ -9,7 +9,7 @@ export type QuestionDocument = Question & Document
 @Schema()
 export class Question{
 
-  @Prop({ required: true, unique:true} )
+  @Prop({ required: true} )
   textQuestion: string
 
   @Prop({ required: true} )
@@ -20,4 +20,4 @@ export class Question{
 
 }
 
-export const QuestionSchemas = SchemaFactory.createForClass(Question).index({ index: 1 }, { unique: true });
+export const QuestionSchemas = SchemaFactory.createForClass(Question)//.index({ index: 1 }, { unique: true });
