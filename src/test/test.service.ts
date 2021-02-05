@@ -47,7 +47,29 @@ export class TestService {
   }
 
   async removeById(id) {
-    return  await this.testModel.findByIdAndRemove(id)
+    return await this.testModel.findByIdAndRemove(id)
+  }
+
+  async addStudent(idTest,idStudent) {
+    return await this.testModel.findByIdAndUpdate(
+      idTest,
+      {
+        $addToSet: {
+          'idStudent': idStudent,
+        },
+      },
+      { new: true }
+    )
+  }
+
+  async removeStudent(idTest,idStudent) {
+    console.log(idStudent);
+    return await this.testModel.findByIdAndUpdate(
+      idTest,
+      {
+        $pull: {idStudent: idStudent}
+      }
+    )
   }
 
 }

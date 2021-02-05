@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { configModule } from './configure.root';
 import { TokenModule } from './token/token.module';
 import { TestModule } from './test/test.module';
+import { StudentStoryModule } from './student-story/student-story.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TestModule } from './test/test.module';
       }
     ),
     TestModule,
+    StudentStoryModule,
   ]
 })
 export class AppModule {}

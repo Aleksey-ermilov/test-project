@@ -5,7 +5,7 @@ export interface IUser {
   readonly email: string;
   readonly name: string;
   readonly group: string;
-  readonly course: string;
+  readonly faculty: string;
   readonly specialty: string;
   password?: string;
   readonly role: string;

@@ -10,8 +10,7 @@ import { Test } from './schemas/test.shemas';
 @Controller('test')
 export class TestController {
 
-  constructor(private readonly testService: TestService) {
-  }
+  constructor(private readonly testService: TestService) {}
 
   @Get()
   @UseGuards(AuthGuard())

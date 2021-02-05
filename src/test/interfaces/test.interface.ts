@@ -10,5 +10,6 @@ export interface ITestInterface {
   subject: string
   complexity: string
   dateCreate: Date
+  idStudent: [string]
   questions: [IQuestionInterface];
 }

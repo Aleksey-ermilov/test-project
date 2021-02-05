@@ -10,7 +10,6 @@ import { Answer, AnswerSchemas } from './schemas/answer.schemas';
 
 @Module({
   imports:[
-    UserModule,
     AuthModule,
     MongooseModule.forFeature([
       {name: Test.name, schema: TestSchemas},
@@ -19,6 +18,7 @@ import { Answer, AnswerSchemas } from './schemas/answer.schemas';
       ] )
   ],
   providers: [TestService],
-  controllers: [TestController]
+  controllers: [TestController],
+  exports:[TestService]
 })
 export class TestModule {}

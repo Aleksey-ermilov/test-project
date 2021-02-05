@@ -1,4 +1,4 @@
-import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
 import { Question } from './question.schemas';
 
@@ -28,6 +28,9 @@ export class Test{
 
   @Prop({ required: true } )
   dateCreate: Date
+
+  @Prop({default: []})
+  idStudent: [String]
 
   @Prop()
   questions: [Question];

@@ -18,7 +18,7 @@ export class User{
   group: string
 
   @Prop({ required: true} )
-  course: string
+  faculty: string
 
   @Prop({ required: true} )
   specialty: string
@@ -39,7 +39,7 @@ export const UserSchemas = SchemaFactory.createForClass(User)
 //   name: 'Viki',
 //   email: 'Viki@mail.ru',
 //   group: '3541',
-//   course: '1',
+//   faculty: 'qwe',
 //   specialty:'UTS',
 //   pass:'111',
 //   role: 'student',

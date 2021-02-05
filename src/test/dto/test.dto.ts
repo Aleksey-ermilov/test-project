@@ -17,5 +17,7 @@ export class TestDto {
   @IsNotEmpty()
   dateCreate: any
   @IsNotEmpty()
+  idStudent: [string]
+  @IsNotEmpty()
   questions: [QuestionDto];
 }
