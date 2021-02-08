@@ -6,10 +6,10 @@ export interface ITestInterface {
   nameTest: string
   countQuestion: number
   idTeacher: string
-  timeTest: Date
+  timeTest: string
   subject: string
   complexity: string
-  dateCreate: Date
+  dateCreate: string
   idStudent: [string]
   questions: [IQuestionInterface];
 }

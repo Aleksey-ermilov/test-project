@@ -23,6 +23,8 @@ import { SignInDto } from '../auth/dto/signin.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUser } from './interfaces/user.interface';
 import { TeacherService } from './teacher.service';
+import { AddStudentInTestDto } from './dto/add-student-in-test.dto';
+import { RemoveStudentInTestDto } from './dto/remove-student-in-test.dto';
 
 @Controller('user')
 export class UserController {
@@ -96,13 +98,13 @@ export class UserController {
 
   @Post('/addStudentInTest')
   @UseGuards(AuthGuard())
-  async addStudentInTest(@Request() req,@Body() data){
+  async addStudentInTest(@Request() req,@Body() data: AddStudentInTestDto){
     return this.teacherService.addStudentInTest(req.user,data)
   }
 
   @Post('/removeStudentInTest')
   @UseGuards(AuthGuard())
-  async removeStudentInTest(@Request() req,@Body() data){
+  async removeStudentInTest(@Request() req,@Body() data: RemoveStudentInTestDto){
     return this.teacherService.removeStudentInTest(req.user,data)
   }
 }

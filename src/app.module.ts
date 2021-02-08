@@ -24,7 +24,7 @@ import { StudentStoryModule } from './student-story/student-story.module';
       }
     ),
     TestModule,
-    StudentStoryModule,
+    // StudentStoryModule,
   ]
 })
 export class AppModule {}

@@ -27,7 +27,7 @@ export class Test{
   complexity: string
 
   @Prop({ required: true } )
-  dateCreate: Date
+  dateCreate: string
 
   @Prop({default: []})
   idStudent: [String]
